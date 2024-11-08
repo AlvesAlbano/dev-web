@@ -1,0 +1,212 @@
+/* Estilos gerais */
+body {
+    font-family: 'Roboto', Arial, sans-serif;
+    margin: 0;
+    padding: 100px;
+    background-color: #f4f7fb; /* Fundo neutro sem gradiente */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+   
+}
+
+/* Cabeçalho */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #1e00c5;
+    padding: 20px 30px;
+    width: 100%;
+    color: #fff;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    top: 0;
+    z-index: 1;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    font-size: 18px;
+    transition: all 0.3s ease;
+}
+
+.header-right {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-left: auto; /* Alinha o botão de logout à direita */
+}
+
+header button {
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 24px; /* Aumenta o ícone */
+    cursor: pointer;
+    transition: color 0.3s ease;
+    display: flex;
+    align-items: center;
+}
+
+header button:hover {
+    color: #ddd;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    gap: 10px;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.logo-image {
+    height: 45px;
+    width: 45px;
+    border-radius: 50%;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+/* Navegação */
+nav {
+    max-width: 800px;
+    margin: 20px auto 10px;  /* Diminuído a margem superior */
+    font-size: 16px;
+    color: #555;
+    text-align: center;
+}
+
+nav a {
+    color: #1e00c5;
+    text-decoration: none;
+    transition: color 0.3s ease;
+    font-weight: 500;
+}
+
+nav a:hover {
+    color: #ff6b6b;
+}
+
+/* Conteúdo Principal */
+main {
+    background-color: #ffffff;
+    max-width: 900px;
+    margin: 20px auto;  /* Aumento para que o conteúdo fique mais para cima */
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+/* Títulos e Seções */
+.school-header h1 {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 40px;
+    color: #1e00c5;
+    margin-bottom: 20px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.section-title {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+    margin-top: 20px;  /* Diminuído a margem superior */
+    padding-bottom: 8px;
+    border-bottom: 2px solid #1e00c5;
+}
+
+.turno-title {
+    font-size: 20px;
+    font-weight: bold;
+    color: #666;
+    margin-top: 10px;  /* Diminuído a margem superior */
+    padding-bottom: 5px;
+    border-bottom: 1px solid #ddd;
+}
+
+/* Lista de Turmas */
+.turma {
+    margin: 10px 0;  /* Diminuído a margem entre turmas */
+}
+
+.turma p {
+    font-size: 18px;
+    color: #333;
+    cursor: pointer;
+    transition: color 0.3s ease;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.turma p:hover {
+    color: #1e00c5;
+    text-decoration: underline;
+    background-color: #f0f0f0;
+}
+
+/* Efeito de Sombra e Escala */
+.turma p:active {
+    transform: scale(0.98);
+}
+
+/* Botão de Logout */
+.logout-button {
+    background: #1e00c5; /* Cor azul */
+    padding: 10px 15px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #fff;
+    border: none;
+    font-size: 24px; /* Tamanho maior para o ícone */
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.logout-button:hover {
+    background-color: #1900b3; /* Cor azul escuro no hover */
+    transform: scale(1.05);
+}
+
+.logout-button i {
+    font-size: 24px; /* Tamanho do ícone */
+}
+
+/* Mensagem de Erro */
+.error-message {
+    color: #d9534f;
+    font-size: 16px;
+    margin-top: 15px;
+    display: none;
+}
+
+/* Botões e Interatividade */
+.btn-primary {
+    background-color: #1e00c5;
+    color: #fff;
+    padding: 12px 24px;
+    border: none;
+    font-size: 16px;
+    font-weight: 500;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s, box-shadow 0.3s;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.btn-primary:hover {
+    background-color: #1900b3;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+.btn-primary:active {
+    transform: scale(0.98);
+}

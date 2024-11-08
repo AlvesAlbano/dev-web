@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NotasEdu - Boletim do Aluno</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="./style.css">
+    <link rel="icon" href="./logo.png">
+</head>
+<body>
+    <header>
+        <div class="header-left" onclick="window.location.href='/dev-web/Front/Professor/Lista Alunos/index.html'" style="cursor: pointer;">
+            <img src="./logo.png" alt="Logo" class="logo-image">
+            <span>NotasEdu</span>
+        </div>
+        <div class="header-right">
+            <a onclick="window.location.href='/dev-web/Front/Professor/Lista Turmas/index.html'">Escolas</a>
+            <a onclick="window.location.href='/dev-web/Front/Professor/Lista Alunos/index.html'">Alunos</a>
+            <button onclick="logout()" class="logout-button" aria-label="Logout">
+                <i class="fas fa-sign-out-alt"></i>
+            </button>
+        </div>
+    </header>
+
+    <main>
+        <div class="container mt-5">
+            <div class="info-container">
+                <div class="image-container">
+                    <img src="https://media.istockphoto.com/id/1335941248/pt/foto/shot-of-a-handsome-young-man-standing-against-a-grey-background.jpg?s=612x612&w=0&k=20&c=J0IQIG251UO0jV-2i9RV5yNMz3GPY-Ws33VMHt3Ynjc=" alt="Imagem do Usuário" width="150">
+                </div>
+                <div class="info">
+                    <p>Matrícula: 12345678</p>
+                    <p>Nome: Pedro Da Silva</p>
+                    <p>Etapa: 4º</p>
+                    <p>Série: 5º Ano</p>
+                    <p>Turma: A</p>
+                    <p>Data de Nascimento: 01/01/2006</p>
+                </div>
+            </div>
+
+            <table class="table table-bordered table-hover mt-4" id="alunoTable">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>ID Disciplina</th>
+                        <th>Disciplinas</th>
+                        <th>Média 1º Etapa</th>
+                        <th>Média 2º Etapa</th>
+                        <th>Média 3º Etapa</th>
+                        <th>Nota Recuperação</th>
+                        <th>Média Final</th>
+                        <th>Situação</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>Matemática</td>
+                        <td><input type="number" min="0" max="10" step="0.1" class="form-control" value="7.5"></td>
+                        <td><input type="number" min="0" max="10" step="0.1" class="form-control" value="7.5"></td>
+                        <td><input type="number" min="0" max="10" step="0.1" class="form-control" value="7.5"></td>
+                        <td><input type="number" min="0" max="10" step="0.1" class="form-control" value="7.5"></td>
+                        <td>--</td>
+                        <td>--</td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>Matemática</td>
+                        <td><input type="number" min="0" max="10" step="0.1" class="form-control" value="7.5"></td>
+                        <td><input type="number" min="0" max="10" step="0.1" class="form-control" value="7.5"></td>
+                        <td><input type="number" min="0" max="10" step="0.1" class="form-control" value="7.5"></td>
+                        <td><input type="number" min="0" max="10" step="0.1" class="form-control" value="7.5"></td>
+                        <td>--</td>
+                        <td>--</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Português</td>
+                        <td><input type="number" min="0" max="10" step="0.1" class="form-control" value="7.5"></td>
+                        <td><input type="number" min="0" max="10" step="0.1" class="form-control" value="7.5"></td>
+                        <td><input type="number" min="0" max="10" step="0.1" class="form-control" value="7.5"></td>
+                        <td><input type="number" min="0" max="10" step="0.1" class="form-control" value="7.5"></td>
+                        <td>--</td>
+                        <td>--</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>História</td>
+                        <td><input type="number" min="0" max="10" step="0.1" class="form-control" value="7.5"></td>
+                        <td><input type="number" min="0" max="10" step="0.1" class="form-control" value="7.5"></td>
+                        <td><input type="number" min="0" max="10" step="0.1" class="form-control" value="7.5"></td>
+                        <td><input type="number" min="0" max="10" step="0.1" class="form-control" value="7.5"></td>
+                        <td>--</td>
+                        <td>--</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>Geografia</td>
+                        <td><input type="number" min="0" max="10" step="0.1" class="form-control" value="7.5"></td>
+                        <td><input type="number" min="0" max="10" step="0.1" class="form-control" value="7.5"></td>
+                        <td><input type="number" min="0" max="10" step="0.1" class="form-control" value="7.5"></td>
+                        <td><input type="number" min="0" max="10" step="0.1" class="form-control" value="7.5"></td>
+                        <td>--</td>
+                        <td>--</td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>Ciências</td>
+                        <td><input type="number" min="0" max="10" step="0.1" class="form-control" value="7.5"></td>
+                        <td><input type="number" min="0" max="10" step="0.1" class="form-control" value="7.5"></td>
+                        <td><input type="number" min="0" max="10" step="0.1" class="form-control" value="7.5"></td>
+                        <td><input type="number" min="0" max="10" step="0.1" class="form-control" value="7.5"></td>
+                        <td>--</td>
+                        <td>--</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="d-flex justify-content-center mt-4">
+                <button type="button" class="btn btn-primary btn-lg btn-block" style="width: 900px;">Salvar Nota</button>
+            </div>
+        </div>
+    </main>
+
+    <script src="./script.js"></script>
+</body>
+</html>

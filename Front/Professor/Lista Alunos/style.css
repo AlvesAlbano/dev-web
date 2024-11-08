@@ -1,0 +1,147 @@
+/* Estilos Gerais */
+body {
+    font-family: 'Roboto', Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f5f7fa;
+    color: #333;
+}
+
+header, nav, main {
+    padding: 20px;
+    margin: auto;
+    max-width: 1200px;
+}
+
+/* Header Styles */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #1e00c5;
+    color: #fff;
+    padding: 15px 30px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.header-left .logo-image {
+    height: 50px;
+    width: 50px;
+    margin-right: 10px;
+    border-radius: 50%;
+}
+
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 15px; /* Space between items */
+}
+
+.header-right a {
+    color: #fff;
+    font-weight: 500;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.header-right a:hover {
+    color: #d0e7ff;
+}
+
+.logout-button {
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 1.5em;
+    cursor: pointer;
+    transition: color 0.3s, transform 0.3s;
+}
+
+.logout-button:hover {
+    color: #d0e7ff;
+    transform: scale(1.1);
+}
+
+
+
+/* Conteúdo Principal */
+main {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    font-size: 28px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 25px;
+}
+
+/* Lista de Alunos */
+.aluno-item {
+    display: flex;
+    align-items: center;
+    padding: 15px 0;
+    border-bottom: 1px solid #ddd;
+    transition: background-color 0.3s;
+}
+
+.aluno-item:hover {
+    
+    background-color: #f1f5fb;
+}
+
+.aluno-foto {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    margin-right: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.aluno-nome {
+    font-weight: bold;
+    color: #1e00c5;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.aluno-nome:hover {
+    color: #1e00c5;
+    text-decoration: underline;
+}
+
+.aluno-matricula {
+    padding-left: 10px;
+    color: #888;
+    font-size: 0.9em;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    header, main {
+        padding: 15px;
+    }
+
+    .header-left {
+        font-size: 20px;
+    }
+
+    h1 {
+        font-size: 24px;
+    }
+
+    .aluno-foto {
+        width: 50px;
+        height: 50px;
+    }
+}

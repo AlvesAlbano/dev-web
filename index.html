@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NotasEdu - Login</title>
+    <link rel="icon" href="./logo.png">
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha384-k6RqeWeci5ZR/Lv4MR0sA0FfDOMVvQ4iU1XjBQZrFhkEEa9WneD3jNpH/Cd0K9F6" crossorigin="anonymous">
+</head>
+
+<body>
+    <header>
+        <div class="logo-container" onclick="window.location.href='/dev-web/Front/Professor/Lista Alunos/index.html'">
+            <img src="./logo.png" alt="Logo" class="logo-image">
+            <div>NotasEdu</div>
+        </div>
+    </header>
+
+    <div class="login-container">
+        <h2>Login do Aluno</h2>
+
+        <div class="input-group">
+            <label for="matricula">Matrícula:</label>
+            <i class="fas fa-id-card icon"></i> <!-- Novo ícone de matrícula -->
+            <input type="text" id="matricula" name="matricula" placeholder="Digite sua matrícula">
+        </div>
+
+        <div class="input-group">
+            <label for="senha">Senha:</label>
+            <i class="fas fa-lock icon"></i> <!-- Novo ícone de senha -->
+            <input type="password" id="senha" name="senha" placeholder="Digite sua senha">
+        </div>
+
+        <!-- Botão de login estilizado -->
+        <button type="button" class="login-button" onclick="login()">Entrar</button>
+        <p class="error-message" id="error-message">Matrícula ou senha inválida.</p>
+    </div>
+
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <script>
+        function login() {
+            const errorMessage = document.getElementById('error-message');
+            errorMessage.style.display = 'block';
+        }
+    </script>
+</body>
+</html>
