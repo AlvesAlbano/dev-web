@@ -1,8 +1,10 @@
 import mysql from "mysql2";
 
-function conectarBD() {
+let connection;
+
+function conectarBD() {    
     return new Promise((resolve, reject) => {
-        const connection = mysql.createConnection({
+        connection = mysql.createConnection({
             host: "127.0.0.1",
             user: "root",
             password: "12345678",
@@ -21,4 +23,13 @@ function conectarBD() {
     });
 }
 
-export default conectarBD;
+async function iniciarConexao() {
+    try {
+        await conectarBD();  // Aguarda a conexão
+    } catch (error) {
+        console.error("Erro ao conectar ao banco de dados:", error.message);
+        process.exit(1);  // Encerra a aplicação se não conseguir conectar
+    }
+}
+
+export { iniciarConexao, connection };

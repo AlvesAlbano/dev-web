@@ -36,10 +36,16 @@ document.addEventListener("DOMContentLoaded", function () {
     // Atualiza médias e situação automaticamente ao modificar alguma nota
     tabela.addEventListener("input", function (event) {
         if (event.target.tagName === "INPUT") {
+            // Garantir que o valor está entre 0 e 10
+            let valor = parseFloat(event.target.value);
+            if (valor < 0) event.target.value = 0;
+            if (valor > 10) event.target.value = 10;
+    
             const row = event.target.closest("tr");
-            calcularMedia(row);
+            calcularMedia(row); // Recalcula a média após a validação
         }
     });
+    
 });
 
 function logout() {
