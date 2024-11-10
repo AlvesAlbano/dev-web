@@ -21,27 +21,24 @@
         </button>
       </div>
     </header>
-    
+
     <div class="container">
       <h1 class="my-4">Boletim</h1>
       
       <div class="info-container row mb-4">
         <h3>Colégio Batista</h3>
         <div class="col-md-4">
-          <p>Matrícula: 12345678</p>
-          <p>Nome: Pedro Da Silva</p>
-          <!-- <p>Etapa: 4º</p> -->
+          <p><strong>Matrícula:</strong> <span id="matricula"></span></p>
+          <p><strong>Nome:</strong> <span id="nome"></span></p>
         </div>
         <div class="col-md-4">
-          <p>Etapa: 4º</p>
-          <p>Série: 5º Ano</p>
-          <!-- <p>Turma: A</p>
-          <p>Data de Nascimento: 01/01/2006</p> -->
+          <p><strong>Turno:</strong> <span id="etapa"></span></p>
+          <p><strong>Série:</strong> <span id="serie"></span></p>
         </div>
 
         <div class="col-md-4">
-          <p>Turma: A</p>
-          <p>Data de Nascimento: 01/01/2006</p>
+          <p><strong>Turma:</strong> <span id="turma"></span></p>
+          <p><strong>Data de Nascimento:</strong> <span id="dataNascimento"></span></p>
         </div>
       </div>
       
@@ -49,8 +46,7 @@
         <table class="table table-bordered table-hover" id="alunoTable">
           <thead>
             <tr>
-              <th>ID Disciplina</th>
-              <th>Disciplinas</th>
+              <th>Disciplina</th>
               <th>Média 1º Etapa</th>
               <th>Média 2º Etapa</th>
               <th>Média 3º Etapa</th>
@@ -59,66 +55,19 @@
               <th>Situação</th>
             </tr>
           </thead>
-          <tbody>
-            <tr>
-              <td>101</td>
-              <td>Matemática</td>
-              <td>7.5</td>
-              <td>6.8</td>
-              <td>7.0</td>
-              <td>7.5</td>
-              <td>7.2</td>
-              <td>Aprovado</td>
-            </tr>
-            <tr>
-              <td>102</td>
-              <td>Português</td>
-              <td>5.5</td>
-              <td>6.0</td>
-              <td>5.8</td>
-              <td>6.5</td>
-              <td>6.0</td>
-              <td>Aprovado</td>
-            </tr>
-            <tr>
-              <td>103</td>
-              <td>História</td>
-              <td>8.0</td>
-              <td>7.5</td>
-              <td>8.2</td>
-              <td>--</td>
-              <td>7.9</td>
-              <td>Aprovado</td>
-            </tr>
-            <tr>
-              <td>104</td>
-              <td>Geografia</td>
-              <td>4.5</td>
-              <td>5.0</td>
-              <td>5.2</td>
-              <td>6.0</td>
-              <td>5.2</td>
-              <td>Recuperação</td>
-            </tr>
-            <tr>
-              <td>105</td>
-              <td>Ciências</td>
-              <td>6.5</td>
-              <td>6.8</td>
-              <td>7.0</td>
-              <td>--</td>
-              <td>6.8</td>
-              <td>Aprovado</td>
-            </tr>
+          <tbody id="notasTable">
+            <!-- As notas serão inseridas aqui dinamicamente -->
           </tbody>
         </table>
       </div>
       
       <div class="footer-notes">
-        <p>*Presença mínima para aprovação: 70%</p>
+        <!-- <p>*Presença mínima para aprovação: 70%</p> -->
         <p>*Nota mínima para aprovação: 5,0</p>
         <p>*Em caso de reclamação, entre em contato com a coordenação da escola.</p>
       </div>
     </div>
+
+    <script src="./script.js"></script>
   </body>
 </html>
