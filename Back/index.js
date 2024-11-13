@@ -116,7 +116,7 @@ app.post("/boletim", (req, res) => {
     });
 });
 
-app.listen(PORT, async () => {
+app.listen(PORT, '0.0.0.0', async () => {
     await iniciarConexao();  // Estabelece a conexão com o banco antes de iniciar o servidor
-    console.log(`Servidor rodando em http://localhost:${PORT}`);
+    console.log(`Servidor rodando em http://0.0.0.0:${PORT}`);
 });
