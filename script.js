@@ -4,7 +4,7 @@ async function login() {
     const errorMessage = document.getElementById('error-message');
 
     try {
-        const response = await fetch('http://localhost:3307/login', {
+        const response = await fetch('http://0.0.0.0:3307/login', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ matricula, senha })
