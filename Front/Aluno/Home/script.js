@@ -22,6 +22,7 @@ function loadBoletim() {
       if (data.message) {
           alert(data.message);  // Exibir mensagens de erro, se houver
       } else {
+        console.log(data);
           // Atualizar a página com as informações do aluno
           document.getElementById('matricula').innerText = data.aluno.matricula;
           document.getElementById('nome').innerText = data.aluno.nome;

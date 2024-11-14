@@ -1,53 +1,41 @@
-document.addEventListener("DOMContentLoaded", function () {
-    const tabela = document.getElementById("alunoTable");
+document.querySelector(".btn-primary").addEventListener("click", function () {
+    const linhas = Array.from(document.querySelectorAll("#alunoTable tbody tr"));
 
-    function calcularMedia(row) {
-        // Pega as notas das três etapas e a nota de recuperação
-        const notas = Array.from(row.querySelectorAll("input[type='number']"))
-            .map(input => parseFloat(input.value) || 0); // Converte em números, considerando 0 se vazio
-
-        // Calcula a média das três etapas
-        let mediaEtapas = (notas[0] + notas[1] + notas[2]) / 3;
-
-        // Se a nota de recuperação for maior que 0, recalcula a média
-        let mediaFinal = notas[3] > 0 ? (mediaEtapas + notas[3]) / 2 : mediaEtapas;
-
-        // Define a situação com base na média final
-        let situacao = mediaFinal >= 5.0 ? "Aprovado" : "Reprovado";
-
-        // Preenche a coluna da média final e a coluna de situação
-        row.cells[6].textContent = mediaFinal.toFixed(1); // Exibe a média com uma casa decimal
-        row.cells[7].textContent = situacao;
-
-        // Define a cor da situação (verde para aprovado, vermelho para reprovado)
-        row.cells[7].style.color = mediaFinal >= 5.0 ? "green" : "red";
-    }
-
-    function calcularMediasETodasSituacoes() {
-        // Itera sobre as linhas de dados na tabela, ignorando o cabeçalho
-        Array.from(tabela.querySelectorAll("tbody tr")).forEach(row => {
-            calcularMedia(row);
-        });
-    }
-
-    // Calcula médias e situação ao carregar a página
-    calcularMediasETodasSituacoes();
-
-    // Atualiza médias e situação automaticamente ao modificar alguma nota
-    tabela.addEventListener("input", function (event) {
-        if (event.target.tagName === "INPUT") {
-            // Garantir que o valor está entre 0 e 10
-            let valor = parseFloat(event.target.value);
-            if (valor < 0) event.target.value = 0;
-            if (valor > 10) event.target.value = 10;
-    
-            const row = event.target.closest("tr");
-            calcularMedia(row); // Recalcula a média após a validação
-        }
+    // Mapeia as notas em um array de objetos
+    const notasAtualizadas = linhas.map((linha) => {
+        return {
+            id_disciplina: linha.cells[0].textContent,
+            media1: parseFloat(linha.cells[2].querySelector("input").value) || 0,
+            media2: parseFloat(linha.cells[3].querySelector("input").value) || 0,
+            media3: parseFloat(linha.cells[4].querySelector("input").value) || 0,
+            recuperacao: parseFloat(linha.cells[5].querySelector("input").value) || 0,
+        };
     });
-    
-});
 
+    // Envia as notas para o servidor
+    fetch("/atualizar-notas", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${localStorage.getItem("token")}`
+        },
+        body: JSON.stringify({ notasAtualizadas })
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.message === "Notas atualizadas com sucesso!") {
+            alert("Notas salvas com sucesso!");
+        } else {
+            alert("Erro ao salvar as notas.");
+        }
+    })
+    .catch(error => {
+        console.error("Erro ao salvar as notas:", error);
+        alert("Erro ao salvar as notas.");
+    });
+
+});
+    
 function logout() {
     // Adicione aqui a função de logout
     alert("Você foi deslogado!");

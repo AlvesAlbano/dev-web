@@ -4,7 +4,7 @@ async function login() {
     const errorMessage = document.getElementById('error-message');
 
     try {
-        const response = await fetch('http://0.0.0.0:3307/login', {
+        const response = await fetch('http://localhost:3307/login', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ matricula, senha })
@@ -15,8 +15,20 @@ async function login() {
         if (response.ok) {
             if (data.token) {
                 localStorage.setItem('token', data.token);
-                alert(data.message); // Login bem-sucedido
-                window.location.href = '/dev-web/Front/Aluno/Home/index.html';
+                
+                // Decodificar o token para acessar o 'role'
+                const decodedToken = jwt_decode(data.token);
+                const role = decodedToken.role;
+
+                // Redirecionar com base no 'role'
+                if (role === 'aluno') {
+                    window.location.href = '/dev-web/Front/Aluno/Home/index.html';
+                } else if (role === 'professor') {
+                    window.location.href = '/dev-web/Front/Professor/Lista Turmas/index.html';
+                } else {
+                    errorMessage.textContent = 'Role inválido no token.';
+                    errorMessage.style.display = 'block';
+                }
             } else {
                 errorMessage.textContent = 'Token não encontrado na resposta.';
                 errorMessage.style.display = 'block';
