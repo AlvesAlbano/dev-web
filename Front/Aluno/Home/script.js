@@ -20,28 +20,18 @@ function loadBoletim() {
   .then(response => response.json())
   .then(data => {
       if (data.message) {
-          alert(data.message);  // Exibir mensagens de erro, se houver
+        console.log(data);
+        alert(data.message);  // Exibir mensagens de erro, se houver
       } else {
         console.log(data);
-          // Atualizar a página com as informações do aluno
-          document.getElementById('matricula').innerText = data.aluno.matricula;
-          document.getElementById('nome').innerText = data.aluno.nome;
-          document.getElementById('etapa').innerText = data.aluno.etapa;
+        document.getElementById("matricula").innerHTML = data.aluno.matricula;
+        document.getElementById("nome").innerHTML = data.aluno.nome;
+        document.getElementById("turno").innerHTML = data.aluno.turno;
+        document.getElementById("serie").innerHTML = `${data.aluno.serie} Ano, ${data.aluno.ensino}`
+        document.getElementById("turma").innerHTML = data.aluno.letra;
+        document.getElementById("dataNascimento").innerHTML = data.aluno.dataNascimento;
 
-          // Aqui pegamos apenas o número da série (por exemplo, '5' de '5 ano A')
-          const serie = data.aluno.serie;
-          const numeroSerie = serie.match(/\d+/); // Captura o número da série (ex: '5' de '5 ano A')
-          document.getElementById('serie').innerText = numeroSerie ? `${numeroSerie}º Ano` : ''; // Exibe o número seguido de "º"
-
-          // Aqui pegamos apenas a letra da turma (por exemplo, 'A' de '5 ano A')
-          const turma = data.aluno.turma;
-          const letraTurma = turma.match(/[A-Za-z]$/); // Extrai o último caractere, que é a letra da turma
-          document.getElementById('turma').innerText = letraTurma ? letraTurma[0] : ''; // Exibe a letra da turma
-
-          document.getElementById('dataNascimento').innerText = data.aluno.dataNascimento;
-
-          // Atualizar a tabela de notas
-          const notasTable = document.getElementById('notasTable');
+        const notasTable = document.getElementById('notasTable');
           data.notas.forEach(nota => {
               // Calcular a média final considerando apenas as notas preenchidas
               let notasDisponiveis = [];

@@ -1,5 +1,4 @@
 import express from "express";
-import bcrypt from "bcryptjs";
 import cors from "cors";
 import jwt from "jsonwebtoken";
 import { iniciarConexao, connection } from "./bd.js";
@@ -10,20 +9,6 @@ const chaveJWT = "chave";
 
 app.use(express.json());
 app.use(cors());
-
-
-// app.get("/pessoa", (req, res) => {
-//     const comandoSql = "SELECT * FROM notasedu.pessoa";
-
-//     connection.query(comandoSql, (err, results) => {
-//         if (err) {
-//             console.error("Erro ao buscar dados:", err.message);
-//             res.status(500).send("Erro ao buscar as notas.");
-//         } else {
-//             res.json(results);
-//         }
-//     });
-// });
 
 app.post("/login", (req, res) => {
     const { matricula, senha } = req.body;
@@ -91,6 +76,7 @@ app.post("/boletim", (req, res) => {
 
                     if (turmaResults.length > 0) {
                         const turma = turmaResults[0];
+                        console.log(turma);
 
                         // Buscar as notas do aluno com o nome da disciplina
                         const comandoNotas = `
@@ -103,16 +89,16 @@ app.post("/boletim", (req, res) => {
                             if (err) {
                                 return res.status(500).json({ message: 'Erro ao buscar notas.' });
                             }
-
-                            // Retornar as informações do aluno, turma e as notas
+                            
                             return res.json({
                                 aluno: {
                                     matricula: aluno.matricula,
                                     nome: aluno.nome,
-                                    etapa: turma.turno,  // Turno
-                                    serie: turma.nome_turma,  // Turma (Nome da turma)
-                                    turma: turma.nome_turma,  // A mesma informação de turma
-                                    dataNascimento: aluno.data_nascimento
+                                    dataNascimento: aluno.data_nascimento,
+                                    serie: turma.serie,
+                                    letra : turma.letra,
+                                    turno: turma.turno,
+                                    ensino: turma.ensino
                                 },
                                 notas: notas  // As notas do aluno com o nome da disciplina
                             });
@@ -131,7 +117,6 @@ app.post("/boletim", (req, res) => {
 app.post("/atualizar-notas", (req, res) => {
     const { notasAtualizadas } = req.body;
 
-    // Validando o token do aluno
     const token = req.headers['authorization']?.split(' ')[1];
     if (!token) {
         return res.status(403).json({ message: 'Token não fornecido.' });
@@ -142,7 +127,6 @@ app.post("/atualizar-notas", (req, res) => {
             return res.status(401).json({ message: 'Token inválido.' });
         }
 
-        // Itera sobre as notas enviadas para atualizar o banco
         const queries = notasAtualizadas.map(nota => {
             return new Promise((resolve, reject) => {
                 const comandoSql = `
@@ -164,50 +148,14 @@ app.post("/atualizar-notas", (req, res) => {
             });
         });
 
-        // Executa todas as queries de atualização
         Promise.all(queries)
             .then(() => res.json({ message: "Notas atualizadas com sucesso!" }))
             .catch(() => res.status(500).json({ message: "Erro ao atualizar as notas." }));
     });
 });
 
-app.get("/turma-lista", (req, res) => {
-    const { id_turma } = decoded;
+app.get("/turmas", (req, res) => {
 
-    // Corrigindo a query SQL: removendo vírgulas desnecessárias
-    const SqlTurma = 'SELECT * FROM Turma WHERE id_turma = ?';
-    connection.execute(SqlTurma, [id_turma], (err, results) => {
-        if (err) {
-            return res.status(500).json({ message: 'Erro ao buscar turma.' });
-        }
-    
-        if (results.length > 0) {
-            const turma = results[0];
-    
-            // Corrigindo a query SQL para buscar alunos da turma específica
-            const SqlAluno = 'SELECT * FROM Aluno WHERE turma = ?';
-            connection.execute(SqlAluno, [id_turma], (err, turmaResults) => {
-                if (err) {
-                    return res.status(500).json({ message: 'Erro ao buscar informações de turma.' });
-                }
-    
-                // Mapear a lista de alunos retornada na resposta JSON
-                const alunos = turmaResults.map(aluno => ({
-                    nome: aluno.nome,
-                    matricula: aluno.matricula,
-                }));
-    
-                // Retornar a turma e a lista de alunos no JSON
-                return res.json({
-                    turma: turma,
-                    alunos: alunos,
-                });
-            });
-        } else {
-            // Caso não encontre a turma
-            return res.status(404).json({ message: 'Turma não encontrada.' });
-        }
-    });    
 });
 
 app.listen(PORT, async () => {
