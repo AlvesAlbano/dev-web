@@ -155,8 +155,21 @@ app.post("/atualizar-notas", (req, res) => {
 });
 
 app.get("/turmas", (req, res) => {
-
+    const comandoSql = `
+        SELECT t.serie, t.letra, t.turno, t.ensino, COUNT(t.id_aluno) AS total_alunos
+        FROM Turma t
+        JOIN Aluno a ON t.id_aluno = a.id_aluno
+        GROUP BY t.serie, t.letra, t.turno, t.ensino
+    `;
+        
+    connection.execute(comandoSql, (err, results) => {
+        if (err) {
+            return res.status(500).json({ message: 'Erro ao buscar turmas.' });
+        }
+        return res.json(results);
+    });
 });
+
 
 app.listen(PORT, async () => {
     await iniciarConexao();  // Estabelece a conexão com o banco antes de iniciar o servidor
