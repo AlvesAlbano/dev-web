@@ -10,6 +10,20 @@ const chaveJWT = "chave";
 app.use(express.json());
 app.use(cors());
 
+app.get("/teste", (req, res) => {
+    const comandoSql = 'SELECT * FROM Aluno';
+
+    connection.query(comandoSql, (error, results) => {
+        if (error) {
+            console.error('Erro ao executar o comando SQL:', error);
+            res.status(500).send('Erro no servidor');
+            return;
+        }
+        
+        res.status(200).json(results); // Retorna os resultados como JSON
+    });
+});
+
 app.post("/login", (req, res) => {
     const { matricula, senha } = req.body;
 
