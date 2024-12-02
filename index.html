@@ -8,39 +8,59 @@
     <link rel="stylesheet" href="./style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha384-k6RqeWeci5ZR/Lv4MR0sA0FfDOMVvQ4iU1XjBQZrFhkEEa9WneD3jNpH/Cd0K9F6" crossorigin="anonymous">
 </head>
-
 <body>
     <header>
-        <div class="logo-container" onclick="window.location.href='/dev-web/Front/Professor/Lista Alunos/index.html'">
+        <div class="logo-container" onclick="window.location.href='Front/Professor/Lista Alunos/index.html'">
             <img src="./logo.png" alt="Logo" class="logo-image">
             <div>NotasEdu</div>
         </div>
     </header>
 
-    <div class="login-container">
-        <h2>Acessar Portal</h2>
+    <!-- Contêiner principal -->
+    <div class="main-container">
+        <!-- Tela de login -->
+        <div id="loginContainer" class="login-container">
+            <h2>Acessar Portal</h2>
 
+            <div class="input-group">
+                <label for="matricula">Matrícula:</label>
+                <i class="fas fa-id-card icon"></i>
+                <input type="text" id="matricula" name="matricula" placeholder="Digite sua matrícula">
+            </div>
 
-        <div class="input-group">
-            <label for="matricula">Matrícula:</label>
-            <i class="fas fa-id-card icon"></i> <!-- Novo ícone de matrícula -->
-            <input type="text" id="matricula" name="matricula" placeholder="Digite sua matrícula">
+            <div class="input-group">
+                <label for="senha">Senha:</label>
+                <i class="fas fa-lock icon"></i>
+                <input type="password" id="senha" name="senha" placeholder="Digite sua senha">
+            </div>
+
+            <button type="button" class="login-button" onclick="login()">Entrar</button>
+            <p class="error-message" id="error-message">Matrícula ou senha inválida.</p>
+
+            <button class="forgot-password" onclick="showForgotPassword()">Esqueci minha senha</button>
+            <h5> Aluno: matricula - 12345678, senha - unifor123</h1>
+            <h5> Professor: matricula - 12345, senha - 240804</h1>
         </div>
 
-        <div class="input-group">
-            <label for="senha">Senha:</label>
-            <i class="fas fa-lock icon"></i> <!-- Novo ícone de senha -->
-            <input type="password" id="senha" name="senha" placeholder="Digite sua senha">
+        <!-- Tela de redefinição de senha -->
+        <div id="forgotPasswordContainer" class="login-container" style="display: none;">
+            <h2>Redefinir Senha</h2>
+
+            <div class="input-group">
+                <label for="matriculaRedefinir">Matrícula:</label>
+                <i class="fas fa-id-card icon"></i>
+                <input type="text" id="matriculaRedefinir" name="matriculaRedefinir" placeholder="Digite sua matrícula">
+            </div>
+
+            <button type="button" class="login-button" onclick="redefinirSenha()">Enviar</button>
+            <p id="redefinirSenhaMessage" class="error-message"></p>
+
+            <button class="back-to-login" onclick="showLogin()">Voltar ao login</button>
         </div>
-
-        <!-- Botão de login estilizado -->
-        <button type="button" class="login-button" onclick="login()">Entrar</button>
-        <p class="error-message" id="error-message">Matrícula ou senha inválida.</p>
-        <p>Aluno matricula: 12345678 senha: Ab1234@joao</p>
-        <p>Professor matricula: 12345 senha: senha12</p>
-
     </div>
-    <!-- <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script> -->
+
+
+
     <script src="./script.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/jwt-decode/build/jwt-decode.min.js"></script>
 </body>

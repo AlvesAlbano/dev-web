@@ -37,7 +37,15 @@ header {
     width: 50px;
 }
 
-/* Container de login */
+/* Contêiner principal */
+.main-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Container de login/redefinição */
 .login-container {
     background-color: #ffffff;
     border-radius: 12px;
@@ -82,7 +90,7 @@ h2 {
     color: #888;
 }
 
-/* Botão de login */
+/* Botão de login/redefinição */
 .login-button {
     width: 100%;
     padding: 15px;
@@ -101,6 +109,18 @@ h2 {
 }
 .login-button:active {
     transform: scale(0.98);
+}
+
+/* Botões de navegação */
+.forgot-password,
+.back-to-login {
+    margin-top: 10px;
+    background: none;
+    border: none;
+    color: #1e3799;
+    font-size: 14px;
+    text-decoration: underline;
+    cursor: pointer;
 }
 
 /* Mensagem de erro */

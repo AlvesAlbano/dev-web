@@ -11,14 +11,14 @@ function fetchTurmas() {
                 const turmaElement = document.createElement('div');
                 turmaElement.classList.add('turma');
                 turmaElement.innerHTML = `
-                    <p onclick="window.location.href='/dev-web/Front/Professor/Lista Alunos/index.html'"
+                    <p onclick="window.location.href='/dev-web/Front/Professor/Lista Alunos/index.html?serie=${turma.serie}&letra=${turma.letra}'"
                        style="cursor: pointer; color: blue; text-decoration: underline;">
-                        ${turma.serie} Ano ${turma.letra} - ${turma.alunos} Alunos
+                        ${turma.serie}º Ano ${turma.letra} - ${turma.total_alunos} Alunos
                     </p>
                 `;
-                console.log(turma);
                 return turmaElement;
             }
+            
 
             // Exibe as turmas de manhã
             const manhaContainer = document.querySelector('#manha-container');

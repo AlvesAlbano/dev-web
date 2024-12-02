@@ -1,0 +1,102 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #eef2f7;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #1e00c5;
+  color: #fff;
+  padding: 15px 20px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  position: relative; /* Garantir que o posicionamento absoluto funcione dentro do header */
+}
+
+.logo-image {
+  height: 40px;
+  margin-right: 10px;
+}
+
+.header-title {
+  font-size: 1.5em;
+  font-weight: bold;
+}
+
+/* Mover o botão de logout para o canto superior direito */
+.logout-button {
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 1.2em;
+  cursor: pointer;
+  position: absolute; /* Coloca o botão em um local fixo dentro do header */
+  top: 15px; /* Distância do topo do header */
+  right: 20px; /* Distância da borda direita do header */
+}
+
+.container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 40px;
+}
+
+.info-container {
+  display: flex;
+  justify-content: space-between;
+  background: #ffffff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
+
+.info p {
+  margin: 0;
+  font-size: 1.1em;
+}
+
+h1, h3 {
+  color: #1e00c5;
+  font-weight: bold;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #ffffff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
+
+th {
+  background-color: #1e00c5;
+  color: white;
+  padding: 12px;
+}
+
+td {
+  padding: 10px;
+  text-align: center;
+}
+
+tr:nth-child(even) {
+  background-color: #f2f6fc;
+}
+
+tr:hover {
+  background-color: #e9f0ff;
+}
+
+.footer-notes {
+  font-size: 0.9em;
+  color: #555;
+  text-align: left;
+  padding: 10px;
+  background-color: #ffffff;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
