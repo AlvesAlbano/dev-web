@@ -35,31 +35,13 @@
             </div>
 
             <button type="button" class="login-button" onclick="login()">Entrar</button>
-            <p class="error-message" id="error-message">Matrícula ou senha inválida.</p>
+            <p class="error-message" id="error-message" style="display: none;">Matrícula ou senha inválida.</p>
 
-            <button class="forgot-password" onclick="showForgotPassword()">Esqueci minha senha</button>
-            <h5> Aluno: matricula - 12345678, senha - unifor123</h1>
-            <h5> Professor: matricula - 12345, senha - 240804</h1>
+            <h5>Aluno: matrícula - 12345678, senha - unifor123</h5>
+            <h5>Professor: matrícula - 12345, senha - 240804</h5>
         </div>
 
-        <!-- Tela de redefinição de senha -->
-        <div id="forgotPasswordContainer" class="login-container" style="display: none;">
-            <h2>Redefinir Senha</h2>
-
-            <div class="input-group">
-                <label for="matriculaRedefinir">Matrícula:</label>
-                <i class="fas fa-id-card icon"></i>
-                <input type="text" id="matriculaRedefinir" name="matriculaRedefinir" placeholder="Digite sua matrícula">
-            </div>
-
-            <button type="button" class="login-button" onclick="redefinirSenha()">Enviar</button>
-            <p id="redefinirSenhaMessage" class="error-message"></p>
-
-            <button class="back-to-login" onclick="showLogin()">Voltar ao login</button>
-        </div>
     </div>
-
-
 
     <script src="./script.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/jwt-decode/build/jwt-decode.min.js"></script>
